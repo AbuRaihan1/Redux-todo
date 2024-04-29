@@ -1,4 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox";
+import { removeTodo } from "@/redux/features/todoSlice";
+import { useAppDispatch } from "@/redux/hook";
 import { Button } from "../ui/button";
 
 type TodoTypes = {
@@ -8,7 +10,7 @@ type TodoTypes = {
 };
 
 const TodoCard = ({ title, description, id }: TodoTypes) => {
-  console.log(title, description, id);
+  const dispatch = useAppDispatch();
   return (
     <div className="bg-white border flex justify-between items-center p-3 rounded-md">
       <Checkbox />
@@ -16,7 +18,10 @@ const TodoCard = ({ title, description, id }: TodoTypes) => {
       {/* <p> Time </p> */}
       <p>{description}</p>
       <div className="space-x-3">
-        <Button className="bg-red-600 hover:bg-red-700">
+        <Button
+          onClick={() => dispatch(removeTodo(id))}
+          className="bg-red-600 hover:bg-red-700"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
