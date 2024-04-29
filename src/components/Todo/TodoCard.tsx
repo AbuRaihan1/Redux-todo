@@ -1,13 +1,20 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "../ui/button";
 
-const TodoCard = () => {
+type TodoTypes = {
+  title: string;
+  description: string;
+  id: string;
+};
+
+const TodoCard = ({ title, description, id }: TodoTypes) => {
+  console.log(title, description, id);
   return (
     <div className="bg-white border flex justify-between items-center p-3 rounded-md">
       <Checkbox />
-      <p>Todo Title</p>
-      <p> Time </p>
-      <p>Description</p>
+      <p>{title}</p>
+      {/* <p> Time </p> */}
+      <p>{description}</p>
       <div className="space-x-3">
         <Button className="bg-red-600 hover:bg-red-700">
           <svg

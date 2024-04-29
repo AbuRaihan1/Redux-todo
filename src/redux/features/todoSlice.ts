@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 type TTodos = {
+  id: string;
   title: string;
   description: string;
   isCompleted?: boolean;
@@ -19,6 +20,7 @@ const todoSlice = createSlice({
     addTodo: (state, action: PayloadAction<TTodos>) => {
       state.todos.push({ ...action.payload, isCompleted: false });
     },
+   
   },
 });
 export const { addTodo } = todoSlice.actions;

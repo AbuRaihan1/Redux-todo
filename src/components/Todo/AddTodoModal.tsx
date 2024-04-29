@@ -6,13 +6,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
-import { addTodo } from "@/redux/features/todoSlice";
 import { useAppDispatch } from "@/redux/hook";
 import { DialogClose, DialogTrigger } from "@radix-ui/react-dialog";
 import { Label } from "@radix-ui/react-label";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import { addTodo } from "@/redux/features/todoSlice";
 
 const AddTodoModal = () => {
   const [task, setTask] = useState("");
@@ -21,9 +21,11 @@ const AddTodoModal = () => {
 
   const handleAddTask = (e) => {
     e.preventDefault();
+    const id = Math.random().toString(36).substring(2, 7);
     const taskDetails = {
       title: task,
       description: description,
+      id: id,
     };
     dispatch(addTodo(taskDetails));
   };
